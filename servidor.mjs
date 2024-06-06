@@ -1,5 +1,5 @@
 import {createServer} from 'node:http'
-import { GetTraerJson,GetTraerID,EliminarProducto, CrearProducto} from './funciones.mjs';
+import { GetTraerJson,GetTraerID,EliminarProducto, CrearProducto,editarProducto} from './funciones.mjs';
 
 
 

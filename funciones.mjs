@@ -178,11 +178,41 @@ const editarProducto = (peticion,respuesta) =>{
                 respuesta.end('Error: no se encontro el archivo')
             }
             else{
-                const objetoJSON = JSON.parse(datos)
+                const objetoJSON = JSON.parse(datos)  //Pasamos JSON a OBJ JS
 
-                const objetoCliente = JSON.parse(datosCliente)
+                const arrayProductos = objetoJSON.productos; //Obtenemos el array productos[(Objetos)]
 
-                
+                const objetoCliente = JSON.parse(datosCliente) //Pasamos JSON a OBJ JS
+
+                const indice =  arrayProductos.findIndex((producto)=>{return parseInt(producto.id) === parseInt(id)}) //Obtenemos la pos del arreglo
+
+                //console.log(indice)  -> 6 Ya que los arrays empiezan en 0
+
+                arrayProductos[indice] = {  //Editamos el objeto 
+                    id: id,
+                    nombre: objetoCliente.nombre,
+                    stock: objetoCliente.stock,
+                    categoria: objetoCliente.categoria,
+                    marca: objetoCliente.marca
+                }
+
+                writeFile(ruta,JSON.stringify(objetoJSON),err =>{ //Lo escribimos 
+                    if (err) {
+                        respuesta.writeHead(404,{
+                            'Content-Type':'text/plain',
+                            'access-control-allow-origin':'*'
+                        })
+                        respuesta.end('Error')
+                    }
+                    else{
+                        respuesta.writeHead(200,{
+                            'Content-Type':'application/json',
+                            'access-control-allow-origin':'*'
+                        })
+                        respuesta.end('Modificado con exito')
+                    }
+
+                })
 
             }
         })
@@ -243,4 +273,4 @@ const EliminarProducto = (peticion,respuesta)=>{
 
 
 
-export {GetTraerJson,GetTraerID,CrearProducto,EliminarProducto}
+export {GetTraerJson,GetTraerID,CrearProducto,EliminarProducto,editarProducto}

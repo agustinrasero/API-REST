@@ -1,5 +1,1 @@
- 
-                    {
-                        "productos": [{"id":1,"nombre":"Laptop","categoria":"Electrónica","marca":"Dell","stock":15},{"id":2,"nombre":"Smartphone","categoria":"Electrónica","marca":"Samsung","stock":30},{"id":3,"nombre":"Zapatos Deportivos","categoria":"Ropa y Accesorios","marca":"Nike","stock":25},{"id":4,"nombre":"Televisor","categoria":"Electrónica","marca":"LG","stock":10},{"id":5,"nombre":"Auriculares","categoria":"Accesorios","marca":"Sony","stock":50},{"id":6,"nombre":"Loco","stock":"777"},{"id":7,"nombre":"prueba2","marca":"Nvidia","categoria":"Prueba","stock":"50"}]
-                    }
-                
+{"productos":[{"id":1,"nombre":"Laptop","categoria":"Electrónica","marca":"Dell","stock":15},{"id":2,"nombre":"Smartphone","categoria":"Electrónica","marca":"Samsung","stock":30},{"id":3,"nombre":"Zapatos Deportivos","categoria":"Ropa y Accesorios","marca":"Nike","stock":25},{"id":4,"nombre":"Televisor","categoria":"Electrónica","marca":"LG","stock":10},{"id":5,"nombre":"Auriculares","categoria":"Accesorios","marca":"Sony","stock":50},{"id":6,"nombre":"Loco","stock":"777"},{"id":"7","nombre":"prueba2E","stock":"5","categoria":"PruebaE","marca":"NvidiaE"}]}
