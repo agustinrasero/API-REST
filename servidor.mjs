@@ -20,8 +20,8 @@ const servidor = createServer((peticion,respuesta)=>{
         if (peticion.url === '/v1/productos') {
             GetTraerJson(respuesta)
         }
-        //Obtener 1 producto por su ID
-        else if (peticion.url.match('/v1/productos')) {
+        
+        else if (peticion.url.match('/v1/productos')) { //Obtener 1 producto por su ID
             GetTraerID(peticion,respuesta)
         }
         else{

@@ -93,11 +93,11 @@ const CrearProducto = (peticion, respuesta) =>{
         
         readFile(ruta,(error, datos)=>{ //Leer el archivo
             if(error){
-                respuesta.writeHead(500, {
+                respuesta.writeHead(404, {
                     'Content-Type':'text/plain',
                     'access-control-allow-origin':'*'
                 });
-                respuesta.end('Error de servidor')
+                respuesta.end('Ruta no encontrada')
             }
             else{
                 const objetoJSON = JSON.parse(datos) //JSON -> OBJ JS
@@ -109,11 +109,11 @@ const CrearProducto = (peticion, respuesta) =>{
                 const id = Math.max(...arrayIds) + 1 //Obtener el id más alto.
                 
                 const nuevoProducto = { //Construir el nuevo objeto
-                    id: id,
+                    id: parseInt(id),
                     nombre: objetoUsuario.nombre,
                     marca: objetoUsuario.marca,
                     categoria: objetoUsuario.categoria,
-                    stock: objetoUsuario.stock
+                    stock: parseInt(objetoUsuario.stock)
                 }
                 
                 objetoJSON.productos.push(nuevoProducto) //Insertar el nuevo producto al array dentro del objeto
@@ -133,7 +133,7 @@ const CrearProducto = (peticion, respuesta) =>{
                             'Content-Type':'text/plain',
                             'access-control-allow-origin':'*'
                         })
-                        respuesta.end('Error al crear el JSON')
+                        respuesta.end('Error al crear el recurso')
                     }
                     else{
                         respuesta.writeHead(202, {
@@ -189,9 +189,9 @@ const editarProducto = (peticion,respuesta) =>{
                 //console.log(indice)  -> 6 Ya que los arrays empiezan en 0
 
                 arrayProductos[indice] = {  //Editamos el objeto 
-                    id: id,
+                    id: parseInt(id),
                     nombre: objetoCliente.nombre,
-                    stock: objetoCliente.stock,
+                    stock: parseInt(objetoCliente.stock),
                     categoria: objetoCliente.categoria,
                     marca: objetoCliente.marca
                 }
@@ -202,7 +202,7 @@ const editarProducto = (peticion,respuesta) =>{
                             'Content-Type':'text/plain',
                             'access-control-allow-origin':'*'
                         })
-                        respuesta.end('Error')
+                        respuesta.end('Error al actualizar el producto')
                     }
                     else{
                         respuesta.writeHead(200,{
